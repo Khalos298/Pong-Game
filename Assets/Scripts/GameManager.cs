@@ -7,18 +7,20 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Camera Camara;
-    
+    public GameObject ball;
+    float posicionBola; 
+
     //Variables de  las posiciones. 
     public Vector3 positionArribaDer;
     public Vector3 positionAbajoDer;
     public Vector3 positionArribaIzq;
     public Vector3 positionAbajoIzq;
     public float m_distaciaCamara;
-    float m_SphereRadius = 0.5f;
+    //float m_SphereRadius = 0.5f;
 
     //Se crean estas variable para acceder a ellas desde el script de la bola
-   private int m_puntajeJugador1;
-   private int m_puntajeJugador2;
+   [SerializeField] private int m_puntajeJugador1;
+   [SerializeField] private int m_puntajeJugador2;
 
     //Distancia jugador a la distancia min. 
     public float offsetJugadorAMargen;
@@ -38,7 +40,6 @@ public class GameManager : MonoBehaviour
         //con esta linea, no se elimina el codigo, sino que puede usarse en otra escena.es decir, se conserva la forma sin ser destruido totalmente.
         //dontdestroyonload(this);
         LimitesPantalla();
-
     }
 
     //Se crea este metodo para darle valor al puntaje
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
             m_puntajeJugador1++;
         }
 
-        else if(jugadorQueAnota==2)
+        else if(jugadorQueAnota == 2)
         {
             m_puntajeJugador2++;
         }

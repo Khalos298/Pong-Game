@@ -153,12 +153,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camara: {fileID: 963194227}
+  ball: {fileID: 913787792}
   positionArribaDer: {x: 11.576923, y: 3.4038463, z: -9}
   positionAbajoDer: {x: 11.576923, y: -4, z: -9}
   positionArribaIzq: {x: -11.557693, y: 3.4038463, z: -9}
   positionAbajoIzq: {x: -11.557693, y: -4, z: -9}
   m_distaciaCamara: 1
-  offsetJugadorAMargen: 2
+  m_puntajeJugador1: 0
+  m_puntajeJugador2: 0
+  offsetJugadorAMargen: 1
 --- !u!4 &26025423
 Transform:
   m_ObjectHideFlags: 0
@@ -643,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e8f4992963ca846a150f2c28af843d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_velocidad_bolaRef: 0
+  m_velocidad_bolaRef: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

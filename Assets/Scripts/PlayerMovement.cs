@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //El GetAxisRaw, arroja valores enteros. El GetAxis, arroja valores decimales. 
         //direccionDeMovimiento = Input.GetAxisRaw("Vertical");
-       
         //Movimiento_Jugador();
     }
 

@@ -19,8 +19,9 @@ public class MovBola : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_movimientoX = Random.Range(0.1f, 1);
-        m_movimientoY = Random.Range(0.1f, 1);
+        m_movimientoX = Random.Range(-1f, 1);
+        m_movimientoY = Random.Range(-1f, 1);
+        m_velocidad = m_velocidad_bolaRef;
         m_velocidad_bolaRef = m_velocidad;
         DistanciaBola();
     }
@@ -28,14 +29,13 @@ public class MovBola : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        //if (tiempoEsperado >= tiempoTotal)
-        //{
-        //    return;
-        //}
-        //tiempoEsperado += Time.deltaTime;
+        if (tiempoEsperado >= tiempoTotal)
+        {
+            return;
+        }
+        tiempoTotal += Time.deltaTime;
         MovPelota();
     }
-
 
     public void MovPelota()
     {
@@ -55,25 +55,27 @@ public class MovBola : MonoBehaviour
 
         Debug.Log("Tiempo esperado " + tiempoEsperado);
         Debug.Log("Tiempo Total  " + tiempoTotal);
-        
     }
     public void LimitesParaPelota()
     {
-        // Si el transform de nuestra posicion en x es mayor o igual al ancho de la pantalla, entonces toma un movimiento en x
-        // Hya que ver que el tranform que estamos poniendo de la bola no debe ser mayor que el valor que le damos, en este caso, el tamaño de la pantalla.
-        // Si la pelota cruza dicho valor, se regresa. 
+        //Si el transform de nuestra posicion en x es mayor o igual al ancho de la pantalla, entonces toma un movimiento en x
+        //Hay que ver que el tranform que estamos poniendo de la bola no debe ser mayor que el valor que le damos, en este caso, el tamaño de la pantalla.
+        //Si la pelota cruza dicho valor, se regresa. 
         //Estos valores con tomados como referencia para poner las posiciones o limites de izquierda o derecha. 
         float dis = GameManager.Instance.positionArribaDer.x;
         
         if (transform.position.x >= dis && m_movimientoX >= 0)
         {
+           
             GameManager.Instance.Marcador(1);
+            GameManager.Instance.ball.SetActive(false);
         }
 
         float dis2 = GameManager.Instance.positionArribaIzq.x;
         if (transform.position.x <= dis2 && m_movimientoX <= 0)
         {
             GameManager.Instance.Marcador(2);
+            GameManager.Instance.ball.SetActive(false);
         }
 
         //Este valore es tomados como referencia para poner las posicion o limite de abajo. 
@@ -89,7 +91,6 @@ public class MovBola : MonoBehaviour
         {
             m_movimientoY *= -1;
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
