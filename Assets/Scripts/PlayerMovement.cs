@@ -17,14 +17,8 @@ public class PlayerMovement : MonoBehaviour
     {
         UbicarJugador();
     }
-    private void Update()
-    {
-        //El GetAxisRaw, arroja valores enteros. El GetAxis, arroja valores decimales. 
-        //direccionDeMovimiento = Input.GetAxisRaw("Vertical");
-        //Movimiento_Jugador();
-    }
 
-    void UbicarJugador()
+    public void UbicarJugador()
     {
         //El If se ejecuta como una pregunta
         if (estaALaIzq)
@@ -41,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(GameManager.Instance.positionArribaDer.x - GameManager.Instance.offsetJugadorAMargen, 0, GameManager.Instance.m_distaciaCamara);
         }
         
-
     }
 
     //Al ponerle un int en los parentesis en el metodo, podemos usar luego ese valor en otros scripts, de tal modo que sse pueda usar el metodo sin escribirlo todo otra vez. 
